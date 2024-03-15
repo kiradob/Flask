@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Карточка товара</h2>
+    <div id="card">
+        <h3 class="left">Группа:</h3>
+        <h3 class="center">{{item.group}}</h3>
+        <h3 class="left">Товар:</h3>
+        <h3 class="center">{{item.name}}</h3>
+        <h3 class="left">Описание:</h3>
+        <h3 class="center">{{item.desc}}</h3>
+    </div>
+{% endblock %}

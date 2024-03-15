@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>{{title}}</title>
+</head>
+<body>
+
+{% block menu %}
+<header class="main_header">
+    <a href="{{ url_for('index') }}" class="logo">Наш магазин</a>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('categories') }}">Категории</a></li>
+            <li><a href="{{ url_for('about') }}">О нас</a></li>
+        </ul>
+    </nav>
+
+</header>
+{% endblock %}
+
+{% block content %}
+<p>base.html block content</p>
+{% endblock %}
+
+</body>
+
+{% block footer %}
+<footer>
+    <hr>
+    <div id="footer-text">
+        <p class="alignleft">Наш магазин</p>
+        <p class="alignright">Dobrynina &copy;</p>
+    </div>
+</footer>
+{% endblock %}
+
+</html>

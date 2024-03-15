@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Категории</h2>
+    {% block categories %}
+        {% for cat in categories %}
+                <li id="cat_name"><a>{{cat}}</a></li>
+                    {% for item in warez %}
+                        {% if cat == item.group %}
+                            <ul id="cat_item_lst">
+                                <li><a id="cat_item" href="{{ url_for('item', selected_from_cats=item.name) }}">
+                                        {{item.name}}</a></li>
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+        {% endfor %}
+    {% endblock %}
+{% endblock %}
