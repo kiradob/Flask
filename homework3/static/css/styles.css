@@ -1,0 +1,9 @@
+.alert.success {
+    background-color: rgb(171, 223, 171);
+  }
+  .alert.error {
+    background-color: rgb(111, 67, 67);
+  }
+  .row{
+     max-width: 350px;
+  }

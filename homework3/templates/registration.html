@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Блок вывода flash сообщений -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="d-flex justify-content-center alert {{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- Контейнер с формой регистрации -->
+<div class="container d-flex justify-content-center">
+    <form method="POST" action="{{ url_for('registration') }}">
+        <h2 class="fw-semibold text-center mt-5">Форма регистрации</h2>
+        {{ form.csrf_token }}
+        {% for field in form %}
+        <div class="row fw-bolder pb-1">
+            {% if field.name != 'submit' and field.name != 'csrf_token' %}
+                {{ field.label }}<br>
+                {{ field }}
+            {% elif field.name == 'submit' %}
+                <div class="row pt-2"></div>
+                {{ field }}
+            {% endif %}
+            {% if field.errors %}
+            <ul class="alert alert-danger justify-content-center">
+                {% for error in field.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <!-- Кнопка перехода -->
+        <div class="row pt-3 justify-content-center">Уже есть учётная запись? Жмите</div>
+        <div class="row justify-content-center">
+            <a href="{{ url_for('login') }}" class="btn btn-secondary mt-1">Войти</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
